@@ -19,7 +19,7 @@ const HomeShortCut = ({style, navigation}) => {
             <ShortCutBtn title="急售物件" style={styles.btn} icon={<Ionicons name="warning-outline" size={ITEM_WIDTH} color="black" />} />
             <ShortCutBtn title="業界新聞" style={styles.btn} icon={<FontAwesome name="newspaper-o" size={ITEM_WIDTH} color="black" onPress={()=>{onPress(navigation, 'News')}}/>} />
             <ShortCutBtn title="新增物件" style={styles.btn} icon={<Ionicons name="add-circle-outline" size={ITEM_WIDTH} color="black" />} />
-            <ShortCutBtn title="好康消息" style={styles.btn} icon={<Ionicons name="megaphone-outline" size={ITEM_WIDTH} color="black" />} />
+            <ShortCutBtn title="好康消息" style={styles.btn} icon={<Ionicons name="megaphone-outline" size={ITEM_WIDTH} color="black" onPress={()=>{onPress(navigation, 'GoodNews')}}/>} />
             <ShortCutBtn title="試算" style={styles.btn} icon={<SimpleLineIcons name="calculator" size={ITEM_WIDTH} color="black" />} />
         </View>
     )

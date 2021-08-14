@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import HomePage from "../components/HomePage";
 import Fack from "../components/Fake2";
 import News from "../screens/News";
+import GoodNews from "../screens/GoodNews";
 
 import plate from "../styles/plate";
 const Tab = createStackNavigator();
@@ -40,6 +41,14 @@ export default function App1() {
         }}
       />
 
+      <Tab.Screen
+        name="GoodNews"
+        component={GoodNews}
+        options={{
+          headerStyle: styles,
+          headerTitle: "好康消息",
+        }}
+      />
     </Tab.Navigator>
 
     
