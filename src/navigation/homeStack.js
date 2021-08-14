@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Header from "../components/Header";
 import HomePage from "../components/HomePage";
 import Fack from "../components/Fake2";
+import News from "../screens/News";
 
 import plate from "../styles/plate";
 const Tab = createStackNavigator();
@@ -29,7 +30,19 @@ export default function App1() {
           headerTitle: "租房",
         }}
       />
+
+      <Tab.Screen
+        name="News"
+        component={News}
+        options={{
+          headerStyle: styles,
+          headerTitle: "業界新聞",
+        }}
+      />
+
     </Tab.Navigator>
+
+    
   );
 }
 

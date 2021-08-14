@@ -6,6 +6,8 @@ import { UrgentObject } from "../screens/UrgentObject";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+import { AntDesign } from '@expo/vector-icons'; 
+
 // stack navigator
 
 import HomeStack from "./homeStack";
@@ -13,6 +15,7 @@ import userRelativeStack from "./userRelativeStack";
 import sellTogetherStack from "./sellTogetherStack";
 import collectStack from "./collectStack";
 import collaborationStack from "./collaborationStack";
+import plate from "../styles/plate";
 
 const Tab = createBottomTabNavigator();
 
