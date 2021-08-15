@@ -1,15 +1,12 @@
-import * as React from "react";
-// import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
+import React from "react";
+import {Dimensions} from "react-native";
 import { Home } from "../screens/Home";
 import { UrgentObject } from "../screens/UrgentObject";
 
+import { AntDesign } from '@expo/vector-icons'; 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { AntDesign } from '@expo/vector-icons'; 
-
 // stack navigator
-
 import HomeStack from "./homeStack";
 import userRelativeStack from "./userRelativeStack";
 import sellTogetherStack from "./sellTogetherStack";
@@ -18,14 +15,15 @@ import collaborationStack from "./collaborationStack";
 import plate from "../styles/plate";
 
 const Tab = createBottomTabNavigator();
-
 // const MainStack = createNativeStackNavigator();
+
+const {width} = Dimensions.get('window');
 
 export const Main = () => (
   <Tab.Navigator
     screenOptions={{
       headerShown: false,
-      tabBarStyle: { backgroundColor: plate.lightOrange },
+      tabBarStyle: { backgroundColor: plate.lightOrange, width: width },
       tabBarActiveTintColor: "red",
     }}
   >

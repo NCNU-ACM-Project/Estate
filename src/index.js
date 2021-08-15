@@ -15,7 +15,7 @@ export default function App() {
   return (
   <Provider store={store}>
     <NativeBaseProvider>
-      <StatusBar style="auto" />
+      {/* <StatusBar style="auto" /> */}
       <NavigationContainer>
           <Main />
       </NavigationContainer>

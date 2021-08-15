@@ -1,6 +1,6 @@
 import React from 'react'
 import { TouchableOpacity, StyleSheet, View, Dimensions } from 'react-native'
-import NormalText from '../NormalText'
+import NormalText from '../../components/NormalText'
 import plate from "../../styles/plate";
 
 const ITEM_WIDTH = Math.floor(Dimensions.get("window").height / 10);

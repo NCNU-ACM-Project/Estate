@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
-import NormalText from "../NormalText";
-import Hr from "../Hr";
+import NormalText from "../../components/NormalText";
+import Hr from "../../components/Hr";
 import SystemInfoEntry from "./SystemInfoEntry";
 import { useSelector } from "react-redux";
 

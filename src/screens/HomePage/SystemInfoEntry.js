@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Card } from "react-native";
-import SmallText from "../SmallText";
+import SmallText from "../../components/SmallText";
 
 const SystemInfoEntry = ({ systemInfo }) => {
   const FormatDate = (date) => {

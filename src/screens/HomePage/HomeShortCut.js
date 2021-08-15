@@ -9,17 +9,17 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 const ITEM_WIDTH = Math.floor(Dimensions.get("window").height / 10) - 30;
 
 const HomeShortCut = ({style, navigation}) => {
-    const onPress = (navigation, route) =>{
-        navigation.push(route);
+    const onPress = (navigation, loc) =>{
+        navigation.push(loc);
     }
 
     return (
         <View style={[styles.container, style]}>
-            <ShortCutBtn title="租房" style={styles.btn} icon={<Feather name="home" size={ITEM_WIDTH} color="black" onPress={()=>{onPress(navigation, 'fake')}}/>} />
+            <ShortCutBtn title="租房" style={styles.btn} icon={<Feather name="home" size={ITEM_WIDTH} color="black" onPress={()=>{onPress(navigation, "fake")}}/>} />
             <ShortCutBtn title="急售物件" style={styles.btn} icon={<Ionicons name="warning-outline" size={ITEM_WIDTH} color="black" />} />
-            <ShortCutBtn title="業界新聞" style={styles.btn} icon={<FontAwesome name="newspaper-o" size={ITEM_WIDTH} color="black" onPress={()=>{onPress(navigation, 'News')}}/>} />
+            <ShortCutBtn title="業界新聞" style={styles.btn} icon={<FontAwesome name="newspaper-o" size={ITEM_WIDTH} color="black"/>} />
             <ShortCutBtn title="新增物件" style={styles.btn} icon={<Ionicons name="add-circle-outline" size={ITEM_WIDTH} color="black" />} />
-            <ShortCutBtn title="好康消息" style={styles.btn} icon={<Ionicons name="megaphone-outline" size={ITEM_WIDTH} color="black" onPress={()=>{onPress(navigation, 'GoodNews')}}/>} />
+            <ShortCutBtn title="好康消息" style={styles.btn} icon={<Ionicons name="megaphone-outline" size={ITEM_WIDTH} color="black"   onPress={()=>{onPress(navigation, "GoodNews")}} />} />
             <ShortCutBtn title="試算" style={styles.btn} icon={<SimpleLineIcons name="calculator" size={ITEM_WIDTH} color="black" />} />
         </View>
     )

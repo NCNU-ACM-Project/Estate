@@ -1,7 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Header from "../components/Header";
-import HomePage from "../components/HomePage";
+import HomePage from "../screens/HomePage";
 import Fack from "../components/Fake2";
 import News from "../screens/News";
 import GoodNews from "../screens/GoodNews";
@@ -11,23 +10,16 @@ const Tab = createStackNavigator();
 
 export default function App1() {
   return (
-    <Tab.Navigator styles={styles.container}>
+    <Tab.Navigator>
       <Tab.Screen
         name="home"
         component={HomePage}
-        options={({ navigation, route }) => {
-          return {
-            headerTitle: (navigation) => (
-              <Header navigation={navigation} title="主頁" />
-            ),
-          };
-        }}
+        options={{ headerStyle: styles, headerTitleAlign: 'center', title: "主頁" }}
       />
       <Tab.Screen
-        name="Fake"
+        name="fake"
         component={Fack}
         options={{
-          headerStyle: styles,
           headerTitle: "租房",
         }}
       />
@@ -36,7 +28,6 @@ export default function App1() {
         name="News"
         component={News}
         options={{
-          headerStyle: styles,
           headerTitle: "業界新聞",
         }}
       />
@@ -45,13 +36,10 @@ export default function App1() {
         name="GoodNews"
         component={GoodNews}
         options={{
-          headerStyle: styles,
           headerTitle: "好康消息",
         }}
       />
     </Tab.Navigator>
-
-    
   );
 }
 
