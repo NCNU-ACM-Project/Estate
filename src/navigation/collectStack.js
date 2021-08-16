@@ -7,7 +7,7 @@ const Tab = createStackNavigator();
 
 export default function App1() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{ headerStyle: styles, headerTitleAlign: 'center' }}>
       <Tab.Screen
         name="Fake1"
         title="我的收藏"

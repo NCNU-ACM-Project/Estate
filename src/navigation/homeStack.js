@@ -10,12 +10,10 @@ const Tab = createStackNavigator();
 
 export default function App1() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen
-        name="home"
-        component={HomePage}
-        options={{ headerStyle: styles, headerTitleAlign: 'center', title: "主頁" }}
-      />
+    <Tab.Navigator
+      screenOptions={{ headerStyle: styles, headerTitleAlign: "center" }}
+    >
+      <Tab.Screen name="home" component={HomePage} />
       <Tab.Screen
         name="fake"
         component={Fack}

@@ -12,7 +12,7 @@ class NormalText extends Component {
   }
   render() {
     return (
-      <Text style={[this.props.style, fonts.normal, scaled.normal, this.props.style]}>
+      <Text style={[fonts.normal, scaled.normal, this.props.style]}>
         {this.props.children}
       </Text>
     );
