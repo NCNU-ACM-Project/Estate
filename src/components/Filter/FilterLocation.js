@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Text, Select, CheckIcon } from 'native-base';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setLocation } from '../../store/slices/filter';
+import { setLocation } from '../../store/slices/FilterSlice';
 
 const FilterLocation = (props) => {
   const { location } = useSelector((state) => state.filter);

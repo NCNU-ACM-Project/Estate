@@ -3,7 +3,7 @@ import { Popover, useDisclose, Button, Icon } from 'native-base';
 import { Feather } from '@expo/vector-icons';
 
 import { useSelector, useDispatch } from 'react-redux';
-import * as filterSlice from '../../store/slices/filter';
+import * as filterSlice from '../../store/slices/FilterSlice';
 
 const Filter = ({children}) => {
   const { isOpen, onOpen, onClose } = useDisclose();

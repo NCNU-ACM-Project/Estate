@@ -7,11 +7,11 @@ import { AntDesign } from '@expo/vector-icons';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // stack navigator
-import HomeStack from "./homeStack";
-import userRelativeStack from "./userRelativeStack";
-import sellTogetherStack from "./sellTogetherStack";
-import collectStack from "./collectStack";
-import collaborationStack from "./collaborationStack";
+import HomeStack from "./HomeStack";
+import userRelativeStack from "./UserRelativeStack";
+import sellTogetherStack from "./SellTogetherStack";
+import collectStack from "./CollectStack";
+import collaborationStack from "./CollaborationStack";
 import plate from "../styles/plate";
 
 const Tab = createBottomTabNavigator();

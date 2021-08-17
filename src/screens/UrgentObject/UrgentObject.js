@@ -3,7 +3,7 @@ import { Box, Text, Button, Input } from 'native-base';
 import { SearchBar } from '../../components';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setLocation } from '../../store/slices/filter';
+import { setLocation } from '../../store/slices/FilterSlice';
 
 // Temp Import
 import { Filter, FilterLocation } from '../../components'
