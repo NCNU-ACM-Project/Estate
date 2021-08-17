@@ -28,4 +28,14 @@ const filterSlice = createSlice({
 });
 
 export default filterSlice.reducer;
-export const actions = filterSlice.actions;
+export const {
+  setLocation,
+  setMinTime,
+  setMaxTime,
+  setMinSize,
+  setMaxSize,
+  setMinPrice,
+  setMaxPrice,
+  setSortingMethod,
+  resetFilter,
+} = filterSlice.actions;

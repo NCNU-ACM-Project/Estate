@@ -4,6 +4,7 @@ import HomePage from "../screens/HomePage";
 import Fack from "../components/Fake2";
 import News from "../screens/News";
 import GoodNews from "../screens/GoodNews";
+import { UrgentObject } from "../screens/UrgentObject"
 
 import plate from "../styles/plate";
 const Tab = createStackNavigator();
@@ -19,6 +20,14 @@ export default function App1() {
         component={Fack}
         options={{
           headerTitle: "租房",
+        }}
+      />
+
+      <Tab.Screen
+        name="UrgentObject"
+        component={UrgentObject}
+        options={{
+          headerTitle: "急售物件",
         }}
       />
 

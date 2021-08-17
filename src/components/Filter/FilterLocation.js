@@ -14,7 +14,7 @@ const FilterLocation = (props) => {
 
   return (
     <>
-      <Text>縣市</Text>
+      <Text px={2} pb={2} bold>縣市</Text>
       <Select
         selectedValue={location}
         minWidth={320}
