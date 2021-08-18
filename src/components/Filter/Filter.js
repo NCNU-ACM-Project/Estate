@@ -14,7 +14,7 @@ const Filter = (
   }
 ) => {
   const { isOpen, onOpen, onClose } = useDisclose();
-  const filterData = useSelector((state) => state.filter)
+  const filterData = useSelector((state) => state.filter);
   const dispatch = useDispatch();
   
   return (
@@ -32,9 +32,9 @@ const Filter = (
       {...rest}
     >
       <Popover.Content accessibilityLabel="hello world" borderRadius={"xl"}>
-        <Popover.Arrow />
+        <Popover.Arrow bg="#F3E2C8"/>
         <Popover.CloseButton />
-        <Popover.Header>Confirmation</Popover.Header>
+        <Popover.Header bg="#F3E2C8">請選擇篩選條件</Popover.Header>
         <Popover.Body>
           {children}
         </Popover.Body>

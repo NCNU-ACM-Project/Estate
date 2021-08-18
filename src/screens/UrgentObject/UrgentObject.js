@@ -24,6 +24,7 @@ export const UrgentObject = () => {
       <Filter>
         <Filter.Location />
         <Filter.SizeRange />
+        <Filter.PriceRange />
       </Filter>
     </>
   );
