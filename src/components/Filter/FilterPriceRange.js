@@ -26,7 +26,7 @@ const FilterPriceRange = (
   return (
     <>
       <Text p={2} bold>總價</Text>
-      <HStack space={4} alignItems='center'>
+      <HStack space={2} alignItems='center'>
         <Input
           keyboardType="numeric"
           flex={4}
@@ -38,7 +38,7 @@ const FilterPriceRange = (
           placeholder={firstPlaceholder}
           onChangeText={setMinPriceHandler}
         />
-        <Center>元</Center>
+        <Center>萬元</Center>
         <Center>～</Center>
         <Input
           keyboardType="numeric"
@@ -51,7 +51,7 @@ const FilterPriceRange = (
           placeholder={secondPlaceholder}
           onChangeText={setMaxPriceHandler}
         />
-        <Center>元</Center>
+        <Center>萬元</Center>
       </HStack>
     </>
   );

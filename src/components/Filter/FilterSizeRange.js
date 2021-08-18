@@ -27,7 +27,7 @@ const FilterSizeRange = (
   return (
     <>
       <Text p={2} bold>坪數</Text>
-      <HStack space={4} alignItems='center'>
+      <HStack space={2} alignItems='center'>
         <Input
           keyboardType="numeric"
           flex={4}
@@ -37,7 +37,6 @@ const FilterSizeRange = (
           fontSize={14}
           {...rest}
           placeholder={firstPlaceholder}
-          value={minSize}
           onChangeText={setMinSizeHandler}
         />
         <Center>坪</Center>
@@ -51,7 +50,6 @@ const FilterSizeRange = (
           fontSize={14}
           {...rest}
           placeholder={secondPlaceholder}
-          value={maxSize}
           onChangeText={setMaxSizeHandler}
         />
         <Center>坪</Center>
