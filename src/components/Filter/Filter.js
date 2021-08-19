@@ -4,7 +4,7 @@ import { Popover, useDisclose, Button, Icon } from 'native-base';
 import { Feather } from '@expo/vector-icons';
 
 import { useSelector, useDispatch } from 'react-redux';
-import * as FilterSlice from '../../store/slices/FilterSlice';
+// import * as FilterSlice from '../../store/slices/FilterSlice';
 
 const Filter = (
   {
@@ -15,7 +15,7 @@ const Filter = (
 ) => {
   const { isOpen, onOpen, onClose } = useDisclose();
   const filterData = useSelector((state) => state.filter);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   
   return (
     <Popover
@@ -24,17 +24,16 @@ const Filter = (
         return (
           <Button
             {...triggerProps}
-            startIcon={<Icon size='6' color="gray.400" as={<Feather name="filter" />} />}
+            startIcon={<Icon size='4' color="gray.400" as={<Feather name="filter" />} />}
             variant="outline"
           >篩選</Button>
         )
       }}
-      {...rest}
     >
-      <Popover.Content accessibilityLabel="hello world" borderRadius={"xl"}>
+      <Popover.Content accessibilityLabel="hello world" borderRadius={15} {...rest}>
         <Popover.Arrow bg="#F3E2C8"/>
         <Popover.CloseButton />
-        <Popover.Header bg="#F3E2C8">請選擇篩選條件</Popover.Header>
+        <Popover.Header bg="#F3E2C8" borderTopRadius={15}>請選擇篩選條件</Popover.Header>
         <Popover.Body>
           {children}
         </Popover.Body>
