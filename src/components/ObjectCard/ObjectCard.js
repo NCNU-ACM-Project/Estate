@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
+import { useNavigation } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons'; 
 import { 
   Box, 
@@ -24,9 +25,14 @@ const ObjectCard = (
   }
 ) => {
   const windowWidth = Dimensions.get('window').width;
+  const navigation = useNavigation();
+
+  const goToObjectDetailPage = () => {
+    navigation.push('ObjectDetail', tempObjectData);
+  }
 
   return (
-    <Pressable onPress={() => console.log('Pressed')}>
+    <Pressable onPress={goToObjectDetailPage}>
       <Box p={2} {...rest}>
         <Text>{time}</Text>
         <Image
@@ -79,7 +85,7 @@ export const HeartButton = ({toggleLikeHandler, /* isLike, */ ...rest}) => {
       onPress={() => setIsLike(!isLike)/*toggleLikeHandler*/}
     >
       {isLike 
-        ? <Icon size="sm" color="#f43f5e" as={<FontAwesome name="heart"/>}/>
+        ? <Icon size="sm" color="rose.500" as={<FontAwesome name="heart"/>}/>
         : <Icon size="sm" color="black" as={<FontAwesome name="heart-o"/>}/> 
       }
     </Pressable>
@@ -87,3 +93,14 @@ export const HeartButton = ({toggleLikeHandler, /* isLike, */ ...rest}) => {
 }
 
 export default ObjectCard;
+
+const tempObjectData = {
+  imageUri: "https://m1.aboluowang.com/uploadfile/2017/0310/20170310050950580.webp",
+  price: 7913,
+  houseLayout: "一房一廳一衛",
+  size: 12,
+  floor: "5F/10F",
+  houseType: "電梯大樓",
+  current: "獨立套房",
+  face: "南"
+}

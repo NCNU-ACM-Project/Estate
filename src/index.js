@@ -14,7 +14,7 @@ import { store } from "./store";
 export default function App() {
   return (
   <Provider store={store}>
-    <NativeBaseProvider>
+    <NativeBaseProvider config={config}>
       {/* <StatusBar style="auto" /> */}
       <NavigationContainer>
           <Main />
@@ -22,4 +22,10 @@ export default function App() {
     </NativeBaseProvider>
   </Provider>
   );
+}
+
+const config = {
+  dependencies: {
+    'linear-gradient': require('expo-linear-gradient').LinearGradient
+  }
 }
