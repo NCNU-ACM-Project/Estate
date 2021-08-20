@@ -2,7 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { HStack, Center, Input, Text } from 'native-base';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setMinPrice, setMaxPrice } from '../../store/slices/FilterSlice'
 
 const FilterPriceRange = (
@@ -12,15 +12,14 @@ const FilterPriceRange = (
     ...rest
   } 
 ) => {
+  const { minPrice, maxPrice } = useSelector((state) => state.filter)
   const dispatch = useDispatch();
 
   const setMinPriceHandler = (value) => {
-    const num = parseInt(value, 10);
-    dispatch(setMinPrice(num));
+    dispatch(setMinPrice(value));
   }
   const setMaxPriceHandler = (value) => {
-    const num = parseInt(value, 10);
-    dispatch(setMaxPrice(num));
+    dispatch(setMaxPrice(value));
   }
 
   return (
@@ -35,6 +34,7 @@ const FilterPriceRange = (
           py={2}
           fontSize={14}
           {...rest}
+          value={minPrice}
           placeholder={firstPlaceholder}
           onChangeText={setMinPriceHandler}
         />
@@ -48,6 +48,7 @@ const FilterPriceRange = (
           py={2}
           fontSize={14}
           {...rest}
+          value={maxPrice}
           placeholder={secondPlaceholder}
           onChangeText={setMaxPriceHandler}
         />

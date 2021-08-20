@@ -1,11 +1,10 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { Popover, useDisclose, Button, Icon } from 'native-base';
+import { Popover, useDisclose, Button, Icon, Text } from 'native-base';
 import { Feather } from '@expo/vector-icons';
 
 import { useSelector, useDispatch } from 'react-redux';
-// import * as FilterSlice from '../../store/slices/FilterSlice';
-
+import { resetFilter } from '../../store/slices/FilterSlice'
 const Filter = (
   {
     children,
@@ -15,7 +14,12 @@ const Filter = (
 ) => {
   const { isOpen, onOpen, onClose } = useDisclose();
   const filterData = useSelector((state) => state.filter);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
+  const resetFilterHandler = () => {
+    console.log(filterData);
+    dispatch(resetFilter());
+  }
   
   return (
     <Popover
@@ -33,7 +37,9 @@ const Filter = (
       <Popover.Content accessibilityLabel="hello world" borderRadius={15} {...rest}>
         <Popover.Arrow bg="#F3E2C8"/>
         <Popover.CloseButton />
-        <Popover.Header bg="#F3E2C8" borderTopRadius={15}>請選擇篩選條件</Popover.Header>
+        <Popover.Header bg="#F3E2C8" borderTopRadius={15}>
+          <Text fontSize="md" color="black" bold alignSelf="center">請選擇篩選條件</Text>
+        </Popover.Header>
         <Popover.Body>
           {children}
         </Popover.Body>
@@ -41,19 +47,16 @@ const Filter = (
           <Button.Group>
             <Button 
               size="sm" variant="ghost"
-              onPress={() => { 
-                onClose();
-                console.log(filterData);
-              }}
+              onPress={resetFilterHandler}
             >
-              Cancel
+              重設
             </Button>
             <Button size="sm"
               onPress={() => {
                 onClose();
                 applyFilter();
               }}
-            >Apply</Button>
+            >使用</Button>
           </Button.Group>
         </Popover.Footer>
       </Popover.Content>

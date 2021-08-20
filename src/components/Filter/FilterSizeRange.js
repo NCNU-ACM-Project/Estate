@@ -16,12 +16,10 @@ const FilterSizeRange = (
   const dispatch = useDispatch();
 
   const setMinSizeHandler = (value) => {
-    const num = parseInt(value, 10);
-    dispatch(setMinSize(num));
+    dispatch(setMinSize(value));
   }
   const setMaxSizeHandler = (value) => {
-    const num = parseInt(value, 10);
-    dispatch(setMaxSize(num));
+    dispatch(setMaxSize(value));
   }
 
   return (
@@ -36,6 +34,7 @@ const FilterSizeRange = (
           py={2}
           fontSize={14}
           {...rest}
+          value={minSize}
           placeholder={firstPlaceholder}
           onChangeText={setMinSizeHandler}
         />
@@ -49,6 +48,7 @@ const FilterSizeRange = (
           py={2}
           fontSize={14}
           {...rest}
+          value={maxSize}
           placeholder={secondPlaceholder}
           onChangeText={setMaxSizeHandler}
         />

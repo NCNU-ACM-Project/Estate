@@ -2,12 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   location: "",
-  minTime: 0,
-  maxTime: 0,
-  minSize: 0,
-  maxSize: 0,
-  minPrice: 0,
-  maxPrice: 0,
+  minTime: "",
+  maxTime: "",
+  minSize: "",
+  maxSize: "",
+  minPrice: "",
+  maxPrice: "",
   sortingMethod: ""
 }
 
