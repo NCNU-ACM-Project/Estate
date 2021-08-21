@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Center, HStack, Button } from 'native-base';
+import { Box, FlatList, HStack, Button } from 'native-base';
+import { Dimensions } from 'react-native'
 
 import { useSelector, useDispatch } from 'react-redux';
 import { setLocation } from '../../store/slices/FilterSlice';
@@ -10,9 +11,24 @@ export const UrgentObject = () => {
   const filterData = useSelector((state) => state.filter);
   const dispatch = useDispatch();
   const [keyWord, setKeyWord] = React.useState('');
+  const [objectData, setObjectData] = React.useState([]);
+  const windowWidth = Dimensions.get('window').width;
   
+  React.useEffect(() => {
+    (async () => {
+      try { 
+        const response = await fetch('/Users/youmin/Desktop/Estate/src/screens/UrgentObject/MOCK_DATA.json');
+        const json = await response.json();
+        setObjectData(json);
+        console.log(objectData);
+      } catch(e) {
+        console.log(e);
+      }
+    })()
+  }, [filterData]);
+
   return (
-    <>
+    <Box flex={1}>
       <SearchBar
         keyWord={keyWord}
         onChangeText={(value) => setKeyWord(value)}
@@ -28,8 +44,23 @@ export const UrgentObject = () => {
           <Filter.SortingMethod />
         </Filter>
       </HStack>
-      <ObjectCard />
-    </>
+      <FlatList 
+        key="@"
+        data={objectData}
+        keyExtractor={({id}) => "@" + id}
+        numColumns={2}
+        renderItem={({item}) => {
+          return (
+            <ObjectCard 
+              alignItems="center"
+              width={windowWidth/2}
+              safeAreaX
+              {...item}
+            />
+          )
+        }}
+      />
+    </Box>
   );
 }
 

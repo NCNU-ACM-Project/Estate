@@ -15,6 +15,7 @@ import {
 
 const ObjectCard = (
   {
+    id,
     time,
     imageUri,
     title,
@@ -40,12 +41,12 @@ const ObjectCard = (
             uri: imageUri,
           }}
           alt="Alternate Text"
-          size={windowWidth/2 - 4}
+          size={windowWidth*0.45}
           borderRadius={30}
         />
-        <Heading size="lg">{title}</Heading>
-        <Text textAlign="right">坪數：{size} 坪</Text>
-        <Text>{address}</Text>
+        <Heading size="sm" alignSelf="flex-start" pl={2}>{title}</Heading>
+        <Text fontSize="xs" alignSelf="flex-end" textAlign="right">坪數：{size} 坪</Text>
+        <Text fontSize="xs" alignSelf="flex-start">{address}</Text>
         <HStack>
           <Text color="red.500">{price}萬元起</Text>
           <Box flex={1}>
@@ -57,23 +58,13 @@ const ObjectCard = (
   );
 }
 ObjectCard.propTypes = {
-  /* Below Object detail is all Required*/
+  /* Below Object detail is all Required */
   time : PropTypes.string,
   imageUrl : PropTypes.string,
   title : PropTypes.string,
   size : PropTypes.string,
   address : PropTypes.string,
   price : PropTypes.string,
-}
-
-/* These props is just for testing */
-ObjectCard.defaultProps = {
-  time: "2021/8/20",
-  imageUri: "https://m1.aboluowang.com/uploadfile/2017/0310/20170310050950580.webp",
-  title: "五星級豪宅",
-  size: "100",
-  address: "台中市ＸＸ區ＸＸ路ＸＸ巷ＸＸ弄",
-  price: "750"
 }
 
 export const HeartButton = ({toggleLikeHandler, /* isLike, */ ...rest}) => {
