@@ -16,8 +16,9 @@ export const UrgentObject = () => {
   
   React.useEffect(() => {
     (async () => {
+      const url = 'https://gist.githubusercontent.com/youmin1017/598dbbd65d1a175ded5e28481b49fca3/raw/7665e8465b205d930db8bad4b0ebc27da584cd38/FakeObjectData.json'
       try { 
-        const response = await fetch('/Users/youmin/Desktop/Estate/src/screens/UrgentObject/MOCK_DATA.json');
+        const response = await fetch(url);
         const json = await response.json();
         setObjectData(json);
         console.log(objectData);
