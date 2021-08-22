@@ -8,9 +8,9 @@ const initialState = {
   maxSize: 0,
   minPrice: 0,
   maxPrice: 0,
-  sortingMethod: ""
+  sortingMethod: "",
+  newsType: ""
 }
-
 const filterSlice = createSlice({
   name: "filter",
   initialState: initialState,
@@ -23,9 +23,10 @@ const filterSlice = createSlice({
     setMinPrice: (state, action) => { state.minPrice = action.payload; },
     setMaxPrice: (state, action) => { state.maxPrice = action.payload; },
     setSortingMethod: (state, action) => { state.sortingMethod = action.payload; },
-    resetFilter: (state) => { Object.assign(state, initialState) }
+    resetFilter: (state) => { Object.assign(state, initialState) },
+
+    setNewsType: (state, action) => { state.newsType = action.payload; },
   }
 });
-
 export default filterSlice.reducer;
 export const actions = filterSlice.actions;
