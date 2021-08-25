@@ -66,6 +66,9 @@ ObjectCard.propTypes = {
   address : PropTypes.string,
   price : PropTypes.string,
 }
+ObjectCard.defaultProps = {
+  imageUri: "https://m1.aboluowang.com/uploadfile/2017/0310/20170310050950580.webp",
+}
 
 export const HeartButton = ({toggleLikeHandler, /* isLike, */ ...rest}) => {
   const [isLike, setIsLike] = React.useState(false);

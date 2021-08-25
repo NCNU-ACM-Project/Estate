@@ -9,6 +9,7 @@ const Filter = (
   {
     children,
     applyFilter,
+    buttonProps,
     ...rest
   }
 ) => {
@@ -30,6 +31,7 @@ const Filter = (
             {...triggerProps}
             startIcon={<Icon size='4' color="gray.400" as={<Feather name="filter" />} />}
             variant="outline"
+            {...buttonProps}
           >篩選</Button>
         )
       }}

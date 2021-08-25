@@ -3,13 +3,15 @@ import { Box, FlatList, HStack, Button } from 'native-base';
 import { Dimensions } from 'react-native'
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setLocation } from '../../store/slices/FilterSlice';
+// import { setLocation } from '../../store/slices/FilterSlice';
 
 import { SearchBar, Filter, ObjectCard } from '../../components';
 
-export const UrgentObject = () => {
-  const filterData = useSelector((state) => state.filter);
-  const dispatch = useDispatch();
+/**
+ * Sell Together Page Component
+ */
+export default () => {
+  // const filterData = useSelector((state) => state.filter);
   const [keyWord, setKeyWord] = React.useState('');
   const [objectData, setObjectData] = React.useState([]);
   const windowWidth = Dimensions.get('window').width;
@@ -26,19 +28,30 @@ export const UrgentObject = () => {
         console.log(e);
       }
     })()
-  }, [filterData]);
+  }, []);
 
   return (
     <Box flex={1}>
       <SearchBar
         keyWord={keyWord}
         onChangeText={(value) => setKeyWord(value)}
-        onEndEditing={() => dispatch(setLocation(keyWord))}
-        // autoFocus={true}
       />
       <HStack space={1}>
-        <TabToggleButton flex={2}/>
-        <Filter>
+        <TabToggleButton 
+          flex={1} ml={1}
+          optionOne="市調"
+          optionTwo="聯賣"
+        />
+        <TabToggleButton 
+          flex={1}
+          optionOne="土地"
+          optionTwo="建物"
+        />
+        <Filter
+          buttonProps={{
+            mr: 1
+          }}
+        >
           <Filter.Location />
           <Filter.SizeRange />
           <Filter.PriceRange />
@@ -65,17 +78,14 @@ export const UrgentObject = () => {
   );
 }
 
-const TabToggleButton = (props) => {
+const TabToggleButton = ({optionOne, optionTwo, ...rest}) => {
   const [toggle, setToggle] = React.useState(true);
 
   return (
     <Button
-      colorScheme="danger"
-      variant="outline"
-      width="100%"
       onPress={() => setToggle(!toggle)}
-      {...props}
+      {...rest}
     >
-      {toggle ? "土地" : "建物"}
+      {toggle ? optionOne : optionTwo}
     </Button>)
 }
