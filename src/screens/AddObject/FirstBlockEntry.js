@@ -2,17 +2,18 @@ import React from "react";
 import {View , Text, Dimensions, StyleSheet} from "react-native";
 import Hr from  "../../components/Hr";
 
-const HEIGHT =  Math.floor(Dimensions.get("window").height/20);
+const HEIGHT =  Math.floor(Dimensions.get("window").height/15);
 const LEFT_TITLE_WIDTH = Math.floor(Dimensions.get("window").width/5);
 const RIGHT_WIDTH = LEFT_TITLE_WIDTH*4;
-const FirstBlokcEntry = ({title,input,needHr}) =>{
+const FirstBlockEntry = ({title,input,needHr}) =>{
     return(
         <>
         <View style={styles.container}>
             <Text style={styles.leftContainer}>{title}</Text>
             <View style={styles.rightContainer}>
-                {input}
+                {(typeof(input) != "string") && input}
                 {(!input)&& <Text>還沒寫好</Text>}
+                {(typeof(input) == "string") && <Text>{input}</Text>}
             </View>            
         </View>
         {(needHr != 0) &&
@@ -21,7 +22,7 @@ const FirstBlokcEntry = ({title,input,needHr}) =>{
         </>
     )
 }
-export default FirstBlokcEntry;
+export default FirstBlockEntry;
 
 const styles = StyleSheet.create({
     container:{

@@ -5,7 +5,7 @@ import HomePage from "../components/HomePage";
 import Fack from "../components/Fake2";
 import News from "../screens/News";
 import GoodNews from "../screens/GoodNews";
-import AddObject from "../screens/AddObject";
+import addObjectStack from "./addObjectStack";
 
 import plate from "../styles/plate";
 const Tab = createStackNavigator();
@@ -51,8 +51,8 @@ export default function App1() {
         }}
       />
       <Tab.Screen
-        name="AddObject"
-        component={AddObject}
+        name="addObjectStack"
+        component={addObjectStack}
         options={{
           headerStyle: styles,
           headerTitle: "新增市調物件",

@@ -1,7 +1,7 @@
 import React from "react";
 import {View, Text,Dimensions, StyleSheet} from 'react-native';
-import FirstBlockEntry from "./FirstBlockEntry";
-import MyDropdown from "./MyDropdown";
+import FirstBlockEntry from "../AddObject/FirstBlockEntry";
+import MyDropdown from "../AddObject/MyDropdown";
 
 //const LEFT_TITLE_WIDTH = Math.floor(Dimensions.get("window").width/5);
 const HEIGHT =  Math.floor(Dimensions.get("window").height/20);

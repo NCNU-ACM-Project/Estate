@@ -4,12 +4,16 @@ import plate from '../../styles/plate';
 
 /*輸入關鍵字*/
 const KeyInput = (props) => {
-    const [value, onChangeText] = React.useState('');
+    const [value, setValue] = React.useState(props.value);
+    const onChangeText = (text) =>{
+      //props.value = text;
+      setValue(text);
+    }
     return (
       <TextInput
         placeholder = {props.prompt}
         style={[styles.Text_input, {width: props.width,height:props.height}]}
-        onChangeText={text => onChangeText(text)}
+        onChangeText={onChangeText}
         value={value}
         placeholder= {props.prompt}
         keyboardType = {props.type} //"numeric 數字鍵盤"

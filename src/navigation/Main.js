@@ -23,6 +23,9 @@ const Tab = createBottomTabNavigator();
 
 export const Main = () => (
   <Tab.Navigator
+    tabBarOptions={{
+      keyboardHidesTabBar: true
+    }}
     screenOptions={{
       headerShown: false,
       tabBarStyle: { backgroundColor: plate.lightOrange },
