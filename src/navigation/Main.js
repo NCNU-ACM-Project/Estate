@@ -20,10 +20,16 @@ const Tab = createBottomTabNavigator();
 const {width} = Dimensions.get('window');
 
 export const Main = () => (
-  <Tab.Navigator
+  <Tab.Navigator       
     screenOptions={{
+      keyboardHidesTabBar: true,
       headerShown: false,
-      tabBarStyle: { backgroundColor: plate.lightOrange, width: width },
+      tabBarStyle: [
+        {
+          "display": "flex"
+        },
+        { backgroundColor: plate.lightOrange, width: width }
+      ],
       tabBarActiveTintColor: "red",
     }}
   >
