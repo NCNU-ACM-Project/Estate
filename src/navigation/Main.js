@@ -12,47 +12,57 @@ import userRelativeStack from "./UserRelativeStack";
 import sellTogetherStack from "./SellTogetherStack";
 import collectStack from "./CollectStack";
 import collaborationStack from "./CollaborationStack";
+import LoginStack from "./LoginStack";
 import plate from "../styles/plate";
 import { FontAwesome } from "@expo/vector-icons";
+
+import { useSelector } from "react-redux";
 
 const Tab = createBottomTabNavigator();
 // const MainStack = createNativeStackNavigator();
 
 const { width, height } = Dimensions.get("window");
 
-export const Main = () => (
-  <Tab.Navigator
-    screenOptions={{
-      headerShown: false,
-      tabBarStyle: { backgroundColor: plate.lightOrange, width: width },
-      tabBarActiveTintColor: "red",
-      height: height,
-    }}
-  >
-    <Tab.Screen
-      name="Home"
-      component={HomeStack}
-      options={{
-        tabBarIcon: ({ color, size }) => (
-          <AntDesign name="home" color={color} size={size} />
-        ),
+export const Main = () => {
+  const user = useSelector(state => state.user);
+  
+  // if user is null is login is false.
+  const isLogin = !!user.user;
+  return isLogin ? (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: { backgroundColor: plate.lightOrange, width: width },
+        tabBarActiveTintColor: "red",
+        height: height,
       }}
-    />
-    <Tab.Screen name="userRelative" component={userRelativeStack} />
-    <Tab.Screen name="sellTogether" component={sellTogetherStack} />
-    <Tab.Screen name="collect" component={collectStack} />
-    <Tab.Screen
-      name="collaboration"
-      component={collaborationStack}
-      name="合作專區"
-      options={{
-        tabBarIcon: ({ color, size }) => (
-          <FontAwesome name="handshake-o" size={size} color={color} />
-        ),
-      }}
-    />
-  </Tab.Navigator>
-
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeStack}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <AntDesign name="home" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen name="userRelative" component={userRelativeStack} />
+      <Tab.Screen name="sellTogether" component={sellTogetherStack} />
+      <Tab.Screen name="collect" component={collectStack} />
+      <Tab.Screen
+        name="collaboration"
+        component={collaborationStack}
+        name="合作專區"
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome name="handshake-o" size={size} color={color} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  ) : (
+    <LoginStack />
+  );
   // <MainStack.Navigator screenOptions={HeaderStyle}>
   //   <MainStack.Screen name="Home" component={Home}
   //     options={{
@@ -65,7 +75,7 @@ export const Main = () => (
   //     }}
   //   />
   // </MainStack.Navigator>
-);
+};
 
 const HeaderStyle = {
   headerStyle: {
