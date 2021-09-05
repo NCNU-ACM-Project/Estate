@@ -1,12 +1,7 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import Eula from "./Eula";
+import RegsiterPage from "./RegsiterPage";
 
-const RegisterPage = () => {
-    return (
-        <View>
-            <Text></Text>
-        </View>
-    )
-}
+RegsiterPage.Eula = Eula;
 
-export default RegisterPage
+
+export default RegsiterPage;

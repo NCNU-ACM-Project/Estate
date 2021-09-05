@@ -12,7 +12,7 @@ class NormalText extends Component {
   }
   render() {
     return (
-      <Text style={[fonts.normal, scaled.normal, this.props.style]}>
+      <Text style={[fonts.normal, scaled.normal, this.props.style, !!this.props.smaller && scaled.smaller]}>
         {this.props.children}
       </Text>
     );
@@ -20,7 +20,8 @@ class NormalText extends Component {
 }
 
 const scaled = StyleSheet.create({
-  normal: { fontSize: width * 1.0 / scalingFactors.normal }
+  normal: { fontSize: width * 1.0 / scalingFactors.normal },
+  smaller: {fontSize: width * 1.0 / scalingFactors.normal - 10}
 });
 
 export default NormalText;

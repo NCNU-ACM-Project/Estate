@@ -11,7 +11,7 @@ const Entrance = ({navigation}) => {
         navigation.push("login");
     }
     const _goRegister = ()=>{
-        navigation.push("register");
+        navigation.push("eula");
     }
 
   return (
@@ -26,6 +26,7 @@ const Entrance = ({navigation}) => {
               source={require("../../../assets/app_icon.png")}
               size="xl"
               resizeMode="cover"
+              alt="app_icon"
             />
             <View>
               <TouchableOpacity style={[styles.btn, styles.loginBtn]} onPress={_goLogin}>

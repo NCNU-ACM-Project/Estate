@@ -20,18 +20,18 @@ export default function LoginStack() {
           headerTitle: "台灣房地網 NEW",
         }}
       />
-      <Tab.Screen
+        <Tab.Screen
         name="register"
         component={RegisterPage}
         options={{
           headerShown: false,
         }}
       />
-        <Tab.Screen
-        name="register"
-        component={RegisterPage}
+      <Tab.Screen
+        name="eula"
+        component={RegisterPage.Eula}
         options={{
-          headerShown: false,
+          headerTitle: "會員條款",
         }}
       />
       <Tab.Screen
