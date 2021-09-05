@@ -4,13 +4,14 @@ import FirstBlockEntry from "../AddObject/FirstBlockEntry";
 import plate from "../../styles/plate";
 
 const HEIGHT =  Math.floor(Dimensions.get("window").height/20);
-const AddObjectShowData = ({navigation}) =>{
+const AddObjectShowData = ({route,navigation}) =>{
     const onPress = (navigation, route) =>{
         navigation.navigate(route);
     }
     return(
         <>
         <View>
+            <Text>{JSON.stringify(route.params.all_data)}</Text>
             <View>
                 <FirstBlockEntry title="售物者" input = "測試"></FirstBlockEntry>
                 <FirstBlockEntry title="電話1"></FirstBlockEntry>
@@ -20,7 +21,7 @@ const AddObjectShowData = ({navigation}) =>{
                 <FirstBlockEntry title="EMAIL"></FirstBlockEntry>
             </View>
             <TouchableOpacity style={styles.buttombtn} 
-                onPress={()=>{onPress(navigation, 'addObjectShowData')}}               
+                onPress={()=>{onPress(navigation, 'home')}}               
             >
                 <Text>下一步</Text>                
             </TouchableOpacity>

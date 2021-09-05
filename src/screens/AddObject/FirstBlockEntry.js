@@ -12,7 +12,7 @@ const FirstBlockEntry = ({title,input,needHr}) =>{
             <Text style={styles.leftContainer}>{title}</Text>
             <View style={styles.rightContainer}>
                 {(typeof(input) != "string") && input}
-                {(!input)&& <Text>還沒寫好</Text>}
+                {(!input)&& <Text></Text>}
                 {(typeof(input) == "string") && <Text>{input}</Text>}
             </View>            
         </View>
