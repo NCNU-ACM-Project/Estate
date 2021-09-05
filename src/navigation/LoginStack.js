@@ -27,6 +27,13 @@ export default function LoginStack() {
           headerShown: false,
         }}
       />
+        <Tab.Screen
+        name="register"
+        component={RegisterPage}
+        options={{
+          headerShown: false,
+        }}
+      />
       <Tab.Screen
         name="login"
         component={LoginPage}
