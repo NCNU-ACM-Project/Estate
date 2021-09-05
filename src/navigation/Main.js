@@ -23,6 +23,7 @@ const { width, height } = Dimensions.get("window");
 export const Main = () => (
   <Tab.Navigator
     screenOptions={{
+      tabBarHideOnKeyboard: true,
       headerShown: false,
       tabBarStyle: { backgroundColor: plate.lightOrange, width: width },
       tabBarActiveTintColor: "red",
