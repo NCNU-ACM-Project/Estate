@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import plate from "../styles/plate";
 import LoginPage from "../screens/Login";
 import Entrance from "../screens/Entrance";
+import RegisterPage from "../screens/Register";
 
 const Tab = createStackNavigator();
 
@@ -20,14 +21,14 @@ export default function LoginStack() {
         }}
       />
       <Tab.Screen
-        name="login"
-        component={LoginPage}
+        name="register"
+        component={RegisterPage}
         options={{
           headerShown: false,
         }}
       />
       <Tab.Screen
-        name="register"
+        name="login"
         component={LoginPage}
         options={{
           headerShown: false,
