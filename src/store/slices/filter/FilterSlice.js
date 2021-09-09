@@ -9,7 +9,10 @@ const initialState = {
   minPrice: 0,
   maxPrice: 0,
   sortingMethod: "",
-  newsType: ""
+  newsType: "0",
+  orderType: "asc",
+  dataType: "date",
+  searchNews: "",
 }
 const filterSlice = createSlice({
   name: "filter",
@@ -26,6 +29,9 @@ const filterSlice = createSlice({
     resetFilter: (state) => { Object.assign(state, initialState) },
 
     setNewsType: (state, action) => { state.newsType = action.payload; },
+    setOrderType: (state, action) => { state.orderType = action.payload; },
+    setDataType: (state, action) => { state.dataType = action.payload; },
+    setSearchNews:(state, action) => { state.searchNews = action.payload; },
   }
 });
 export default filterSlice.reducer;

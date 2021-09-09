@@ -1,12 +1,15 @@
 import React from "react";
-import { ScrollView, VStack, Center, HStack, Box } from "native-base";
+import { ScrollView, VStack, Center, HStack, Box, Button } from "native-base";
 import { Filter } from "./Filter";
 import { Sort } from "./Sort";
 import { KeyInput } from "./KeyInput";
 import { News } from "./News";
 import { ChooseDate } from "./ChooseDate";
 
+import { useSelector } from 'react-redux';
+
 export default function App() {
+  const filterData = useSelector((state) => state.filter);
   return (
     <Box bg="#fff" flex={1}>
       <ScrollView>

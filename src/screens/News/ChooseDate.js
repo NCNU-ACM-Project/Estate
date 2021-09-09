@@ -5,7 +5,10 @@ import DatePicker, { getToday} from "react-native-modern-datepicker";
 export function ChooseDate() {
   const { isOpen, onOpen, onClose } = useDisclose();
   const [datevalue, ondatechange] = useState(getToday());
-  console.log(datevalue);
+  const [tempvalue, ontempchange] = useState("");
+  
+  
+  console.log(tempvalue);
   return (
     <Box ml={23}>
       <Popover
@@ -39,6 +42,7 @@ export function ChooseDate() {
                 textSecondaryColor: "#AE8F00",
                 borderColor: "rgba(122, 146, 165, 0.1)",
               }}
+              maximumDate={getToday()}
               current={datevalue}
               selected={datevalue}
               onDateChange={(date) => ondatechange(date)}
@@ -48,20 +52,20 @@ export function ChooseDate() {
           </Popover.Body>
           <Button.Group ml={180} mb={-3} top={-18}>
             <Button
-              onPress={onClose}
+              onPress={() => {{ontempchange("");onClose();}}}
               size="sm"
               variant="ghost"
               colorScheme="rgb(255,180,140)"
             >
-              取消
+              清 除
             </Button>
             <Button
-              onPress={onClose}
+              onPress={() => {{ontempchange(datevalue)};onClose();}}
               size="sm"
               bg="rgb(255,190,140)"
               colorScheme="rgb(255,180,140)"
             >
-              <Text color="#fff">確 認</Text>
+              <Text color="#fff">確 定</Text>
             </Button>
           </Button.Group>
         </Popover.Content>

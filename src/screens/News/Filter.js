@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setNewsType } from "../../store/slices/filter";
 import { Menu, HamburgerIcon, Box } from "native-base";
 import { Pressable } from "react-native";
 
 export function Filter() {
+  const { newsType } = useSelector((state) => state.filter);
+  const dispatch = useDispatch();
+
   const MenuItemSelect = ({ Data, key }) => {
+    dispatch(setNewsType(key));
     console.log({ Data, key });
   };
-  const [value, onChange] = useState("0");
+
   return (
     <Box>
       <Menu
@@ -21,7 +27,7 @@ export function Filter() {
           );
         }}
       >
-        <Menu.OptionGroup title="Type" type="radio" defaultValue={value}>
+        <Menu.OptionGroup title="Type" type="radio" defaultValue={newsType}>
           {NewsDatas.map(({ Data, key }) => {
             return (
               <Menu.ItemOption
@@ -30,7 +36,6 @@ export function Filter() {
                 key={key}
                 onPress={() => {
                   MenuItemSelect({ Data, key });
-                  onChange(key);
                 }}
               >
                 {Data}

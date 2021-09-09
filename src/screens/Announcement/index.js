@@ -4,7 +4,6 @@ import Announce from "./conponent/announce";
 
 export default function App() {
   return (
-    <NativeBaseProvider>
       <Box pt = {10} >
       <ScrollView>
         <VStack>
@@ -59,6 +58,5 @@ export default function App() {
         </VStack>
       </ScrollView>
       </Box>
-    </NativeBaseProvider>
   );
 }

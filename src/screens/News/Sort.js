@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { Menu, Divider, View } from "native-base";
 import { Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { useSelector, useDispatch } from "react-redux";
+import { setOrderType, setDataType } from "../../store/slices/filter";
 
 export function Sort() {
+  const { dataType, orderType } = useSelector((state) => state.filter);
+  const dispatch = useDispatch();
+
   const SortItemSelect = ({ Text, key }) => {
+    dispatch(setDataType(key));
     console.log({ Text, key });
   };
 
-  const [ordervalue, onChangeorder] = useState("asc");
-  const [Typevalue, onChangetype] = useState("date");
+  const SortTypeSelect = ({ Text, key }) => {
+    dispatch(setOrderType(key));
+    console.log({ Text, key });
+  };
 
   return (
     <View>
@@ -24,15 +32,14 @@ export function Sort() {
           );
         }}
       >
-        <Menu.OptionGroup defaultValue={ordervalue} title="Order" type="radio">
+        <Menu.OptionGroup defaultValue={orderType} title="Order" type="radio">
           {Types.map(({ Text, key }) => {
             return (
               <Menu.ItemOption
                 value={key}
                 key={key}
                 onPress={() => {
-                  SortItemSelect({ Text, key });
-                  onChangeorder(key);
+                  SortTypeSelect({ Text, key });
                 }}
               >
                 {Text}
@@ -43,7 +50,7 @@ export function Sort() {
 
         <Divider />
 
-        <Menu.OptionGroup defaultValue={Typevalue} title="Data" type="checkbox">
+        <Menu.OptionGroup defaultValue={dataType} title="Data" type="checkbox">
           {SortData.map(({ Text, key }) => {
             return (
               <Menu.ItemOption
@@ -51,7 +58,6 @@ export function Sort() {
                 key={key}
                 onPress={() => {
                   SortItemSelect({ Text, key });
-                  onChangetype(key);
                 }}
               >
                 {Text}

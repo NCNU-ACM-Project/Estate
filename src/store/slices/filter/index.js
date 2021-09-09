@@ -11,4 +11,7 @@ export const {
   setSortingMethod,
   resetFilter,
   setNewsType,
+  setOrderType,
+  setDataType,
+  setSearchNews,
 } = actions;

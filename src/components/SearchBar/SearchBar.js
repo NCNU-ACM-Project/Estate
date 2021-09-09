@@ -2,13 +2,13 @@ import React from "react";
 import { Input, Icon, IconButton } from "native-base";
 import { MaterialIcons, EvilIcons } from '@expo/vector-icons';
 
-
 export class SearchBar extends React.Component {
   
   render() {
     const { keyWord, onChangeText, ...rest} = this.props
     return (
       <Input
+        keyboardHeight = {100}
         placeholder="輸入關鍵字"
         bg="#fff"
         width="100%"

@@ -6,7 +6,7 @@ import { UrgentObject } from "../screens/UrgentObject";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { AntDesign } from '@expo/vector-icons'; 
+import { AntDesign } from "@expo/vector-icons";
 
 // stack navigator
 
@@ -24,8 +24,12 @@ const Tab = createBottomTabNavigator();
 export const Main = () => (
   <Tab.Navigator
     screenOptions={{
+      keyboardHidesTabBar: true,
       headerShown: false,
-      tabBarStyle: { backgroundColor: plate.lightOrange },
+      tabBarStyle: [
+        { "display": "flex" },
+        { backgroundColor: plate.lightOrange },
+      ],
       tabBarActiveTintColor: "red",
     }}
   >
