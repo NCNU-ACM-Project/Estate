@@ -3,7 +3,7 @@ import { ScrollView, Text, StyleSheet, Dimensions } from "react-native";
 import LabeledInput from "./LabeledInput";
 import { Stack } from "native-base";
 import TextArea from "./TextArea";
-import SubmitBtn from "./SubmitBtn";
+import SubmitBtn from "../../components/SubmitBtn";
 
 const ContactForm = () => {
   const [data, setData] = useState({});

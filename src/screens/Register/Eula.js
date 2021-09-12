@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { Box } from "native-base";
 import Hr from "../../components/Hr";
 import NormalText from "../../components/NormalText";
-import SubmitBtn from "../CollaborationForm/SubmitBtn";
+import SubmitBtn from "../../components/SubmitBtn";
 
 const Eula = ({navigation}) => {
   const _next = () =>{

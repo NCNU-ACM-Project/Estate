@@ -1,22 +1,24 @@
-import React from 'react'
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import React from "react";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import NormalText from "../components/NormalText";
 
-const SubmitBtn = ({label}) => {
-    return (
-        <TouchableOpacity style={styles.container}>
-            <Text style={styles.label}> {label} </Text>
-        </TouchableOpacity>
-    )
-}
+const SubmitBtn = ({ label, ...rest }) => {
+  return (
+    <TouchableOpacity style={styles.container} {...rest}>
+      <NormalText style={styles.label}> {label} </NormalText>
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: "#FFFCB2",
-        padding: 10,
-    }, label: {
-        textAlign: "center",
-        fontSize: 20,
-    }
-})
+  container: {
+    backgroundColor: "#FFFCB2",
+    padding: 10,
+  },
+  label: {
+    textAlign: "center",
+    fontSize: 20,
+  },
+});
 
-export default SubmitBtn
+export default SubmitBtn;

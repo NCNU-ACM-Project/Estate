@@ -6,8 +6,9 @@ import { loginRequest } from "../../store/slices/user.reucer";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesome } from "@expo/vector-icons";
 import SmallText from "../../components/SmallText";
+import LoginBtn from "./LoginBtn";
 
-const LoginPage = () => {
+const LoginPage = ({ navigation }) => {
   const [userName, sertUserName] = useState("");
   const [passwd, setPasswd] = useState("");
   const dispatch = useDispatch();
@@ -16,53 +17,57 @@ const LoginPage = () => {
   const onLogin = () => {
     dispatch(loginRequest(userName, passwd));
   };
+
+  const goBack = () => {
+    navigation.popToTop();
+  };
+
   return (
     <View style={styles.container}>
       <Center alignItems="center" style={[styles.container, styles.p_4]}>
-          <Text>{JSON.stringify(userData)}</Text>
-          <NormalText>會員登入</NormalText>
-          <Input
-            width="100%"
-            mx={3}
-            my={2}
-            borderRadius={0}
-            placeholder="帳號"
-            onChangeText={sertUserName}
-            InputLeftElement={
-              <FontAwesome
-                name="user"
-                size={24}
-                color="black"
-                style={styles.inputIcon}
-              />
-            }
-          />
-          <Input
-            w="100%"
-            mx={3}
-            my={2}
-            borderRadius={0}
-            type="password"
-            placeholder="密碼"
-            onChangeText={setPasswd}
-            InputLeftElement={
-              <FontAwesome
-                name="lock"
-                size={24}
-                color="black"
-                style={styles.inputIcon}
-              />
-            }
-          />
-          <TouchableOpacity style={styles.forgetPassWd}>
-            <SmallText>
-              忘記密碼
-            </SmallText>
-          </TouchableOpacity>
-          <Button small onPress={onLogin}>
-            登入
-          </Button>
+        <Text>{JSON.stringify(userData)}</Text>
+        <NormalText>會員登入</NormalText>
+        <Input
+          width="100%"
+          mx={3}
+          my={2}
+          borderRadius={0}
+          placeholder="帳號"
+          onChangeText={sertUserName}
+          InputLeftElement={
+            <FontAwesome
+              name="user"
+              size={24}
+              color="black"
+              style={styles.inputIcon}
+            />
+          }
+        />
+        <Input
+          w="100%"
+          mx={3}
+          my={2}
+          borderRadius={0}
+          type="password"
+          placeholder="密碼"
+          onChangeText={setPasswd}
+          InputLeftElement={
+            <FontAwesome
+              name="lock"
+              size={24}
+              color="black"
+              style={styles.inputIcon}
+            />
+          }
+        />
+        <TouchableOpacity style={styles.forgetPassWd}>
+          <SmallText>忘記密碼</SmallText>
+        </TouchableOpacity>
+        <Center style={{flexDirection: "row"}}>
+          <LoginBtn smaller onPress={goBack} label={"返回"} />
+          <LoginBtn smaller onPress={onLogin} label={"登入"} />
         </Center>
+      </Center>
     </View>
   );
 };
@@ -78,11 +83,13 @@ const styles = StyleSheet.create({
   },
   inputIcon: {
     marginLeft: 5,
-  },forgetPassWd:{
-    alignSelf: "flex-end"
-  }, p_4: {
+  },
+  forgetPassWd: {
+    alignSelf: "flex-end",
+  },
+  p_4: {
     padding: 50,
-  }
+  },
 });
 
 export default LoginPage;
