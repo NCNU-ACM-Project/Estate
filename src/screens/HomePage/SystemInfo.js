@@ -6,8 +6,7 @@ import SystemInfoEntry from "./SystemInfoEntry";
 import { useSelector } from "react-redux";
 
 const SystemInfo = ({ style }) => {
-  const {systemInfo} = useSelector(state => state.home);
-
+  const { systemInfo } = useSelector((state) => state.home);
   return (
     <ScrollView style={[styles.container, style]}>
       <NormalText style={styles.titleText}>系統公告</NormalText>
@@ -30,7 +29,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     width: "100%",
     fontSize: 20,
-  }
+  },
 });
 
 export default SystemInfo;

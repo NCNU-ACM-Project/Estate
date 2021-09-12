@@ -1,27 +1,96 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
-import Fack2 from '../components/Fake2';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 
-
+//import Fake from "../components/Fake2";
+import UserRelative from "../screens/MembershipCenter";
+import MyObject from "../screens/MyObject";
+import plate from "../styles/plate";
+import GoodNews from "../screens/GoodNews";
 const Tab = createStackNavigator();
 
 export default function App1() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Fake1" component={Fack2} />
-      <Tab.Screen name="Fake2" component={Fack2} />
+    <Tab.Navigator
+      screenOptions={{ headerStyle: styles, headerTitleAlign: "center" }}
+    >
+      <Tab.Screen name="MembershipCenter" component={UserRelative} />
+
+      <Tab.Screen
+        name="fake"
+        component={MyObject}
+        options={{
+          headerTitle: "我的物件",
+        }}
+      />
+
+      {/* <Tab.Screen
+        name="fake"
+        component={Fake}
+        options={{
+          headerTitle: "賣家回覆",
+        }}
+      /> */}
+
+      {/*}
+      <Tab.Screen
+        name="fake"
+        component={Fack}
+        options={{
+          headerTitle: "買家回覆",
+        }}
+      />
+
+      <Tab.Screen
+        name="fake"
+        component={Fack}
+        options={{
+          headerTitle: "推播訊息",
+        }}
+      />
+
+      <Tab.Screen
+        name="fake"
+        component={Fack}
+        options={{
+          headerTitle: "付費中心",
+        }}
+      />
+
+      <Tab.Screen
+        name="fake"
+        component={Fack}
+        options={{
+          headerTitle: "積分紀錄",
+        }}
+      />
+
+      <Tab.Screen
+        name="fake"
+        component={Fack}
+        options={{
+          headerTitle: "我的行程",
+        }}
+      />
+
+      <Tab.Screen
+        name="fake"
+        component={Fack}
+        options={{
+          headerTitle: "買方租方",
+        }}
+      />
+
+      <Tab.Screen
+        name="fake"
+        component={Fack}
+        options={{
+          headerTitle: "我的追蹤",
+        }} 
+      /> */}
     </Tab.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const styles = {
+  backgroundColor: plate.lightOrange,
+};
