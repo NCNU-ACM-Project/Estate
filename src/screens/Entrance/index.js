@@ -4,15 +4,18 @@ import plate from "../../styles/plate";
 import { LinearGradient } from "expo-linear-gradient";
 import { Box, Image, Center, VStack } from "native-base";
 import NormalText from "../../components/NormalText";
+import {getUserData}  from "../../services/authentication";
 
-const Entrance = ({navigation}) => {
 
-    const _goLogin = ()=>{
-        navigation.push("login");
-    }
-    const _goRegister = ()=>{
-        navigation.push("eula");
-    }
+const Entrance = ({ navigation }) => {
+  const _goLogin = () => {
+    navigation.push("login");
+  };
+  const _goRegister = () => {
+    navigation.push("eula");
+  };
+
+  getUserData()
 
   return (
     <Box style={styles.container}>
@@ -29,10 +32,16 @@ const Entrance = ({navigation}) => {
               alt="app_icon"
             />
             <View>
-              <TouchableOpacity style={[styles.btn, styles.loginBtn]} onPress={_goLogin}>
+              <TouchableOpacity
+                style={[styles.btn, styles.loginBtn]}
+                onPress={_goLogin}
+              >
                 <NormalText style={styles.brownText}>會員登入</NormalText>
               </TouchableOpacity>
-              <TouchableOpacity style={[styles.btn, styles.RegistBtn]} onPress={_goRegister}>
+              <TouchableOpacity
+                style={[styles.btn, styles.RegistBtn]}
+                onPress={_goRegister}
+              >
                 <NormalText style={styles.brownText}>註冊會員</NormalText>
               </TouchableOpacity>
             </View>
