@@ -6,11 +6,6 @@ import { UrgentObject } from "../screens/UrgentObject";
 import { AntDesign } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-<<<<<<< HEAD
-import { AntDesign } from "@expo/vector-icons";
-
-=======
->>>>>>> main
 // stack navigator
 import HomeStack from "./HomeStack";
 import userRelativeStack from "./UserRelativeStack";
@@ -28,18 +23,9 @@ const { width, height } = Dimensions.get("window");
 export const Main = () => (
   <Tab.Navigator
     screenOptions={{
-<<<<<<< HEAD
-      keyboardHidesTabBar: true,
-      headerShown: false,
-      tabBarStyle: [
-        { "display": "flex" },
-        { backgroundColor: plate.lightOrange },
-      ],
-=======
       tabBarHideOnKeyboard: true,
       headerShown: false,
       tabBarStyle: { backgroundColor: plate.lightOrange, width: width },
->>>>>>> main
       tabBarActiveTintColor: "red",
       height: height,
     }}
