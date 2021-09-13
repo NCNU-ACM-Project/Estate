@@ -1,17 +1,17 @@
 import React from "react";
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import Carousel from "./Carousel";
 import HomeShortCut from "./HomeShortCut";
 import SystemInfo from "./SystemInfo";
 
 const { width } = Dimensions.get("window");
 
-const HomePage = ({navigation}) => {
+const HomePage = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Carousel />
       <View style={styles.contentContainer}>
-        <HomeShortCut style={styles.content} navigation={navigation}/>
+        <HomeShortCut style={styles.content} navigation={navigation} />
       </View>
       <View style={styles.contentContainer}>
         <SystemInfo style={styles.content} />

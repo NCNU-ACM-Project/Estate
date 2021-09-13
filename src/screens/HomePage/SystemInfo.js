@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
-import { Text, View, StyleSheet } from "react-native";
-import NormalText from "../NormalText";
-import Hr from "../Hr";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
+import NormalText from "../../components/NormalText";
+import Hr from "../../components/Hr";
 import SystemInfoEntry from "./SystemInfoEntry";
 import { useSelector } from "react-redux";
 
@@ -9,11 +9,11 @@ const SystemInfo = ({ style }) => {
   const {systemInfo} = useSelector(state => state.home);
 
   return (
-    <View style={[styles.container, style]}>
+    <ScrollView style={[styles.container, style]}>
       <NormalText style={styles.titleText}>系統公告</NormalText>
-      <Hr></Hr>
+      <Hr />
       <SystemInfoEntry systemInfo={systemInfo} />
-    </View>
+    </ScrollView>
   );
 };
 
