@@ -10,4 +10,8 @@ export const {
   setMaxPrice,
   setSortingMethod,
   resetFilter,
+  setNewsType,
+  setOrderType,
+  setDataType,
+  setSearchNews,
 } = actions;
