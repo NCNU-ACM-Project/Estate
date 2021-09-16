@@ -2,15 +2,18 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   location: "",
-  minTime: "",
-  maxTime: "",
-  minSize: "",
-  maxSize: "",
-  minPrice: "",
-  maxPrice: "",
-  sortingMethod: ""
+  minTime: 0,
+  maxTime: 0,
+  minSize: 0,
+  maxSize: 0,
+  minPrice: 0,
+  maxPrice: 0,
+  sortingMethod: "",
+  newsType: "0",
+  orderType: "asc",
+  dataType: "date",
+  searchNews: "",
 }
-
 const filterSlice = createSlice({
   name: "filter",
   initialState: initialState,
@@ -23,10 +26,14 @@ const filterSlice = createSlice({
     setMinPrice: (state, action) => { state.minPrice = action.payload; },
     setMaxPrice: (state, action) => { state.maxPrice = action.payload; },
     setSortingMethod: (state, action) => { state.sortingMethod = action.payload; },
-    resetFilter: (state) => { Object.assign(state, initialState) }
+    resetFilter: (state) => { Object.assign(state, initialState) },
+
+    setNewsType: (state, action) => { state.newsType = action.payload; },
+    setOrderType: (state, action) => { state.orderType = action.payload; },
+    setDataType: (state, action) => { state.dataType = action.payload; },
+    setSearchNews:(state, action) => { state.searchNews = action.payload; },
   }
 });
-
 export default filterSlice.reducer;
 export const {
   setLocation,

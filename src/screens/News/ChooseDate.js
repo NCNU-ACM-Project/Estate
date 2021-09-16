@@ -1,89 +1,75 @@
-import React, {useState} from 'react';
-import {TouchableWithoutFeedback, StyleSheet, Text, View, TouchableOpacity, Modal} from 'react-native';
-import px from 'react-native-px2dp';
+import React, { useState } from "react";
+import { Popover, Button, Text, Box, useDisclose } from "native-base";
+import DatePicker, { getToday} from "react-native-modern-datepicker";
 
-import DatePicker from 'react-native-modern-datepicker';
-
-/*日期*/
-const ChooseDate = (props)=>{
-    const [ModalVisible, setModalVisible] = useState(false);
-    return(
-      <View>
-        <Modal
-          onRequestClose={() => setModalVisible(!ModalVisible)}
-          animationType="fade"
-          transparent={true}
-          visible={ModalVisible}
-        >
-            
-          <TouchableWithoutFeedback //點擊背景消失
-            onPress={() => setModalVisible(!ModalVisible)}>
-            <View style={styles.Press}/>
-          </TouchableWithoutFeedback>
-          
-          <View style={[styles.centerView,{margin: 40}]}>
-            <View>
-                <FullUsageExample/>
-              </View>
-            </View>
-          </Modal>
+export function ChooseDate() {
+  const { isOpen, onOpen, onClose } = useDisclose();
+  const [datevalue, ondatechange] = useState(getToday());
+  const [tempvalue, ontempchange] = useState("");
   
-        <TouchableOpacity
-          onPress={() => setModalVisible(true)}
-          style={[styles.Date,{left:props.Left, top: props.Top}]}>
-          <Text style={{ fontWeight:'bold',fontSize: 13.5*px, color: '#FFAF60' }}>選  擇  日  期</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-
-  const FullUsageExample = () => {
-    return (
-      <DatePicker
-        options={{
-          backgroundColor: '#fff',
-          textHeaderColor: '#FFA25B',
-          textDefaultColor: '#FF9224',
-          selectedTextColor: '#fff',
-          mainColor: '#FFA042',
-          textSecondaryColor: '#AE8F00',
-          borderColor: 'rgba(122, 146, 165, 0.1)',
+  
+  console.log(tempvalue);
+  return (
+    <Box ml={23}>
+      <Popover
+        isOpen={isOpen}
+        onClose={onClose}
+        trigger={(triggerProps) => {
+          return (
+            <Button
+              {...triggerProps}
+              onPress={onOpen}
+              w={160}
+              size="sm"
+              variant="outline"
+              colorScheme="rgb(255,180,140)"
+            >
+              選 擇 日 期
+            </Button>
+          );
         }}
-        current="2020-07-13"
-        selected="2020-07-23"
-        mode="calendar"
-        minuteInterval={30}
-        style={{ borderRadius: 10 }}
-      />
-    );
-  };
-
-export default ChooseDate;
-
-const styles = StyleSheet.create({
-    Date:{
-        position: 'absolute',
-        borderRadius:5,
-        width: 147.97*px, 
-        height: 32*px, 
-        borderColor: '#000000', 
-        borderWidth: 1*px,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    centerView:{
-        flex: 1,
-        justifyContent: "center",
-    },
-    
-    /*點擊背景消失*/
-    Press:{
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      top: 0,
-      bottom: 0,
-      width: null,
-  },
-  });
-  
+      >
+        <Popover.Content borderRadius={"xl"} bg="#fff">
+          <Popover.Arrow />
+          <Popover.Body size={335}>
+            <DatePicker
+              options={{
+                backgroundColor: "#fff",
+                textHeaderColor: "#FFA25B",
+                textDefaultColor: "#FF9224",
+                selectedTextColor: "#fff",
+                mainColor: "#FFA042",
+                textSecondaryColor: "#AE8F00",
+                borderColor: "rgba(122, 146, 165, 0.1)",
+              }}
+              maximumDate={getToday()}
+              current={datevalue}
+              selected={datevalue}
+              onDateChange={(date) => ondatechange(date)}
+              mode="calendar"
+              minuteInterval={30}
+            />
+          </Popover.Body>
+          <Button.Group ml={180} mb={-3} top={-18}>
+            <Button
+              onPress={() => {{ontempchange("");onClose();}}}
+              size="sm"
+              variant="ghost"
+              colorScheme="rgb(255,180,140)"
+            >
+              清 除
+            </Button>
+            <Button
+              onPress={() => {{ontempchange(datevalue)};onClose();}}
+              size="sm"
+              bg="rgb(255,190,140)"
+              colorScheme="rgb(255,180,140)"
+            >
+              <Text color="#fff">確 定</Text>
+            </Button>
+          </Button.Group>
+        </Popover.Content>
+      </Popover>
+    </Box>
+  );
+}

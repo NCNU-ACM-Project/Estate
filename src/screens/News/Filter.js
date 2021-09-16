@@ -1,109 +1,65 @@
-import React, {useState} from 'react';
-import {TouchableWithoutFeedback, StyleSheet, Text, View, TouchableOpacity, Image, Modal} from 'react-native';
-import px from 'react-native-px2dp';
-import ModalTitle from "./Modal_title";
-import ModalButton from './Modal_Button';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setNewsType } from "../../store/slices/filter";
+import { Menu, HamburgerIcon, Box } from "native-base";
+import { Pressable } from "react-native";
 
-const Filter = (props)=>{
-  const [ModalVisible, setModalVisible] = useState(false);
-  return(
-    <View>
-      <Modal
-        onRequestClose={() => setModalVisible(!ModalVisible)}
-        animationType="fade"
-        transparent={true}
-        visible={ModalVisible}
+export function Filter() {
+  const { newsType } = useSelector((state) => state.filter);
+  const dispatch = useDispatch();
+
+  const MenuItemSelect = ({ Data, key }) => {
+    dispatch(setNewsType(key));
+    console.log({ Data, key });
+  };
+
+  return (
+    <Box>
+      <Menu
+        mr={60}
+        width={200}
+        height={500}
+        trigger={(triggerProps) => {
+          return (
+            <Pressable {...triggerProps}>
+              <HamburgerIcon color="#8E8E8E" />
+            </Pressable>
+          );
+        }}
       >
-        <TouchableWithoutFeedback //點擊背景消失
-          onPress={() => setModalVisible(!ModalVisible)}>
-          <View style={styles.Press}/>
-        </TouchableWithoutFeedback>
-
-        <View style={[styles.centerView,{margin: 93}]}>
-          <View style={[styles.modalView, {padding:0}]}>
-
-            <ModalTitle Title="請 選 擇 新 聞 分 類"/>
-
-            <ModalButton Top={10} Text="系統故事"/>
-            <ModalButton Top={20} Text="品牌故事"/>
-            <ModalButton Top={30} Text="商品資訊"/>
-            <ModalButton Top={40} Text="重要提醒"/>
-            <ModalButton Top={50} Text="活動訊息"/>
-            <ModalButton Top={60} Text="新品上架"/>
-            <ModalButton Top={70} Text="祝 賀"/>
-            <ModalButton Top={80} Text="媒體報導"/>
-            <ModalButton Top={90} Text="法律實務"/>
-            <ModalButton Top={100} Text="平台公告"/>
-            <ModalButton Top={110} Text="房仲生活"/>
-            <ModalButton Top={120} Text="縣市導覽"/>
-            <ModalButton Top={130} Text="影 音"/>
-          
-            <Text style = {{fontSize:60*px}}></Text>
-            
-            <TouchableOpacity
-              style={[styles.button, {left:70*px}]}
-              onPress={() => setModalVisible(!ModalVisible)}
-            >
-              <Text style={{color:"red"}}>取 消</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
-
-      <TouchableOpacity
-      onPress={() => setModalVisible(true)}
-      style = {{position:'absolute',left: props.Left, top: props.Top}}>
-      <Image source={{uri:"https://i.imgur.com/ezM09y2.png"}} style = {{width: 24*px, height: 24*px}}/>
-    </TouchableOpacity>
-    </View>
-    )
-};
-
-export default Filter;
-
-const styles = StyleSheet.create({
-    
-    /*跳出視窗*/
-    centerView:{
-      flex: 1,
-      justifyContent: "center",
-    },
-
-    modalView: {
-      margin: 10,
-      backgroundColor: "white",
-      borderRadius: 20,
-      padding: 25,
-      alignItems: "center",
-      shadowColor: "#000",
-      shadowOffset: {
-      width: 0,
-      height: 2
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 4,
-      elevation: 5
-    },
-    button: {
-      borderRadius: 20,
-      padding: 10,
-    },
-    textStyle: {
-      color: "white",
-      fontWeight: "bold",
-      textAlign: "center"
-    },
-    modalText: {
-      marginBottom: 15,
-      textAlign: "center"
-    },
-    /*點擊背景消失*/
-    Press:{
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      top: 0,
-      bottom: 0,
-      width: null,
-  },
-});  
+        <Menu.OptionGroup title="Type" type="radio" defaultValue={newsType}>
+          {NewsDatas.map(({ Data, key }) => {
+            return (
+              <Menu.ItemOption
+                alignItems="center"
+                value={key}
+                key={key}
+                onPress={() => {
+                  MenuItemSelect({ Data, key });
+                }}
+              >
+                {Data}
+              </Menu.ItemOption>
+            );
+          })}
+        </Menu.OptionGroup>
+      </Menu>
+    </Box>
+  );
+}
+const NewsDatas = [
+  { Data: "全 部", key: "0" },
+  { Data: "系統故事", key: "1" },
+  { Data: "品牌故事", key: "2" },
+  { Data: "商品資訊", key: "3" },
+  { Data: "重要提醒", key: "4" },
+  { Data: "活動訊息", key: "5" },
+  { Data: "新品上架", key: "6" },
+  { Data: "祝 賀", key: "7" },
+  { Data: "媒體報導", key: "8" },
+  { Data: "法律實務", key: "9" },
+  { Data: "平台公告", key: "10" },
+  { Data: "房仲生活", key: "11" },
+  { Data: "縣市導覽", key: "12" },
+  { Data: "影 音", key: "13" },
+];

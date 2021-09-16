@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Input, Icon, IconButton } from "native-base";
 import { MaterialIcons, EvilIcons } from '@expo/vector-icons';
 
-
 const SearchBar = ({ keyWord, onChangeText, ...rest }) => {
   return (
     <Input
