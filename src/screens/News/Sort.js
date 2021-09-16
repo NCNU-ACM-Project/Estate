@@ -3,7 +3,7 @@ import { Menu, Divider, View } from "native-base";
 import { Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { useSelector, useDispatch } from "react-redux";
-import { setOrderType, setDataType } from "../../store/slices/filter";
+import { setOrderType, setDataType } from "../../store/slices/FilterSlice";
 
 export function Sort() {
   const { dataType, orderType } = useSelector((state) => state.filter);

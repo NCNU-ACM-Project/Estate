@@ -23,11 +23,7 @@ const { width, height } = Dimensions.get("window");
 export const Main = () => (
   <Tab.Navigator       
     screenOptions={{
-<<<<<<< HEAD
-      keyboardHidesTabBar: true,
-=======
       tabBarHideOnKeyboard: true,
->>>>>>> main
       headerShown: false,
       tabBarStyle: [
         {

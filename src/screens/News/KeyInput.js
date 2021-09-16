@@ -2,7 +2,7 @@ import React from "react";
 import { Input, Icon, Box, Button } from "native-base";
 import { AntDesign, Feather } from "@expo/vector-icons";
 import { useSelector, useDispatch } from "react-redux";
-import { setSearchNews } from "../../store/slices/filter";
+import { setSearchNews } from "../../store/slices/FilterSlice";
 export const KeyInput = () => {
   const dispatch = useDispatch();
   const { searchNews } = useSelector((state) => state.filter);

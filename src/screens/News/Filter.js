@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setNewsType } from "../../store/slices/filter";
+import { setNewsType } from "../../store/slices/FilterSlice";
 import { Menu, HamburgerIcon, Box } from "native-base";
 import { Pressable } from "react-native";
 
