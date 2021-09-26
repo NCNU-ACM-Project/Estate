@@ -7,7 +7,7 @@ const AddObject = ({navigation}) =>{
         <>
         <View>
             {/* <Text>{JSON.stringify(all_data)}</Text> */}
-            <AddObjectFirstPage navigation={navigation} all_data={all_data} setAll_data={setAll_data}></AddObjectFirstPage>           
+            <AddObjectFirstPage navigation={navigation} all_data={all_data} setAll_data={setAll_data}/>
         </View>
         </>
     )

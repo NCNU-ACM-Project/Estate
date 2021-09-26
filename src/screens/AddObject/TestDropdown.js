@@ -7,13 +7,14 @@ import {
   Center,
   NativeBaseProvider,
 } from "native-base"
-const TestDropdown = ({datas, tmpdata, setTmpdata, label, width, prompt}) => {
+const TestDropdown = ({datas, tmpdata, setTmpdata, label, width, height,prompt}) => {
   return (
-    <VStack space={4} >
+    <VStack space={4} > 
       <Select 
         bg={plate.lightOrange}
         width={width}
-        placeholder={(!prompt) && "請選擇"}
+        height = {height}
+        placeholder={(!prompt) ? "請選擇" : prompt}
         onValueChange={(itemValue) => setTmpdata({...tmpdata,[label]:itemValue})}
         _selectedItem={{
           bg: "cyan.300",

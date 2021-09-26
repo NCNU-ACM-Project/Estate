@@ -17,7 +17,7 @@ const KeyInput = (props) => {
         onChangeText={onChangeText}
         onBlur={() => props.setTmpdata({...props.tmpdata,[props.label]:value})}
         value={value}
-        placeholder= {(!props.prompt)&& " 請輸入"}
+        placeholder= {(!props.prompt)? " 請輸入":props.prompt}
         keyboardType = {props.type} //"numeric 數字鍵盤"
       />
     );

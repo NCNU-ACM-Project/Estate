@@ -9,11 +9,6 @@ const KEYINPUT_WIDTH = Math.floor(Dimensions.get("window").width/5)*3;
 const AddObjectFillData = ({route,navigation})=>{
 
     const [tmpdata2,setTmp_data2] = useState({});
-    const check = () =>{
-        setTmp_data2({...tmpdata2,"測試":1});
-        route.params.setAll_data({...route.params.all_data,...tmpdata2,"測試":1});
-
-    }
     const onPress = (navigation, route, all_data, setAll_data ) =>{
         setAll_data({...all_data,...tmpdata2});
         navigation.push(route,{all_data:all_data,setAll_data:setAll_data});
@@ -23,10 +18,10 @@ const AddObjectFillData = ({route,navigation})=>{
         <>
         <Text>{JSON.stringify(route.params.all_data)}</Text>
         <FirstBlockEntry
-            title="售屋者" 
+            title="售物者" 
             input={<KeyInput  width = {KEYINPUT_WIDTH} height = {HEIGHT}
             tmpdata={tmpdata2} setTmpdata={setTmp_data2}
-            label="售屋者"/>}
+            label="售物者"/>}
         />
         <FirstBlockEntry 
             title="電話1" 
@@ -53,16 +48,9 @@ const AddObjectFillData = ({route,navigation})=>{
             input={<KeyInput  width = {KEYINPUT_WIDTH} height = {HEIGHT}
             tmpdata={tmpdata2} setTmpdata={setTmp_data2}
             label="電子信箱" />}/>
-        {/* <Text>{JSON.stringify(tmpdata2)}</Text>
-        <Text>{JSON.stringify(route.params.all_data)}</Text>
-
-        <TouchableOpacity 
-            onPress={()=>{check()}}               
-        >
-            <Text>提交</Text>                
-        </TouchableOpacity> */}
+        <Text>{JSON.stringify(tmpdata2)}</Text>        
         <TouchableOpacity style={styles.buttombtn} 
-            onPress={()=>{check(),onPress(navigation, 'addObjectShowData',route.params.all_data, route.params.setAll_data)}}               
+            onPress={()=>{onPress(navigation, 'addObjectShowData',route.params.all_data, route.params.setAll_data)}}               
         >
             <Text>下一步</Text>                
         </TouchableOpacity>
