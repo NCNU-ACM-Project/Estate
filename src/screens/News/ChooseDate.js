@@ -1,13 +1,24 @@
 import React, { useState } from "react";
 import { Popover, Button, Text, Box, useDisclose } from "native-base";
-import DatePicker, { getToday} from "react-native-modern-datepicker";
+import DatePicker, { getToday } from "react-native-modern-datepicker";
+import { useDispatch } from "react-redux";
+import { setDate } from "../../store/slices/addinformation";
+import { setChooseDate } from "../../store/slices/filter";
 
-export function ChooseDate() {
+
+export function ChooseDate(props) {
   const { isOpen, onOpen, onClose } = useDisclose();
   const [datevalue, ondatechange] = useState(getToday());
-  const [tempvalue, ontempchange] = useState("");
-  
-  
+  const [tempvalue, ontempchange] = useState("選 擇 日 期");
+  const dispatch = useDispatch();
+  const btnChange = (date) => {
+    if (props.name === "新增物件") {
+      dispatch(setDate(date));
+    }
+    else{
+      dispatch(setChooseDate(date));
+    }
+  };
   console.log(tempvalue);
   return (
     <Box ml={23}>
@@ -24,7 +35,7 @@ export function ChooseDate() {
               variant="outline"
               colorScheme="rgb(255,180,140)"
             >
-              選 擇 日 期
+              {tempvalue}
             </Button>
           );
         }}
@@ -52,7 +63,12 @@ export function ChooseDate() {
           </Popover.Body>
           <Button.Group ml={180} mb={-3} top={-18}>
             <Button
-              onPress={() => {{ontempchange("");onClose();}}}
+              onPress={() => {
+                {
+                  ontempchange("");
+                  onClose();
+                }
+              }}
               size="sm"
               variant="ghost"
               colorScheme="rgb(255,180,140)"
@@ -60,7 +76,15 @@ export function ChooseDate() {
               清 除
             </Button>
             <Button
-              onPress={() => {{ontempchange(datevalue)};onClose();}}
+              onPress={() => {
+                {
+                  ontempchange(datevalue);
+                }
+                {
+                  btnChange(datevalue);
+                }
+                onClose();
+              }}
               size="sm"
               bg="rgb(255,190,140)"
               colorScheme="rgb(255,180,140)"

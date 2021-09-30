@@ -5,6 +5,7 @@ import { UrgentObject } from "../screens/UrgentObject";
 
 import { AntDesign } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 // stack navigator
 import HomeStack from "./HomeStack";
@@ -39,7 +40,19 @@ export const Main = () => (
         ),
       }}
     />
-    <Tab.Screen name="userRelative" component={userRelativeStack} />
+    <Tab.Screen
+      name="會員中心"
+      component={userRelativeStack}
+      options={{
+        tabBarIcon: ({ color, size }) => (
+          <MaterialCommunityIcons
+            name="account-group"
+            size={size}
+            color={color}
+          />
+        ),
+      }}
+    />
     <Tab.Screen name="sellTogether" component={sellTogetherStack} />
     <Tab.Screen name="collect" component={collectStack} />
     <Tab.Screen

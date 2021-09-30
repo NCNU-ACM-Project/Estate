@@ -13,6 +13,7 @@ const initialState = {
   orderType: "asc",
   dataType: "date",
   searchNews: "",
+  setChooseDate:"",
 }
 const filterSlice = createSlice({
   name: "filter",
@@ -32,6 +33,7 @@ const filterSlice = createSlice({
     setOrderType: (state, action) => { state.orderType = action.payload; },
     setDataType: (state, action) => { state.dataType = action.payload; },
     setSearchNews:(state, action) => { state.searchNews = action.payload; },
+    setChooseDate:(state, action) => { state.choosedata = action.payload; },
   }
 });
 export default filterSlice.reducer;

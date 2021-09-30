@@ -14,4 +14,5 @@ export const {
   setOrderType,
   setDataType,
   setSearchNews,
+  setChooseDate,
 } = actions;
