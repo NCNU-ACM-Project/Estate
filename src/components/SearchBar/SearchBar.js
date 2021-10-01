@@ -21,7 +21,7 @@ const SearchBar = ({ keyWord, onChangeText, ...rest }) => {
   )
 }
 SearchBar.propTypes = {
-  keyWord : PropTypes.string.isRequired,
+  keyWord: PropTypes.string.isRequired,
   onChangeText: PropTypes.func.isRequired,
 }
 
