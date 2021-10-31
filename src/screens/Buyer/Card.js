@@ -18,7 +18,7 @@ export default function Card() {
             <VStack space={3}>
               <Text>等 級 : {informationData.data.level}</Text>
               <Text>接觸日期 : {informationData.date}</Text>
-              <Text>帶看過 : {informationData.look}</Text>
+              <Text>帶看過 : {informationData.data.look}</Text>
               <Text>
                 地址 : {informationData.data.city} {informationData.data.area}{" "}
                 {informationData.data.address}
@@ -52,9 +52,12 @@ export default function Card() {
         space={2}
       >
         <HStack space={8} alignItems="center">
-          <Text fontSize={30} color={plate.orange}>
-            {informationData.buyer}
-          </Text>
+          <VStack>
+            <Text fontSize={30} color={plate.orange}>
+              {informationData.data.buyer}
+            </Text>
+            <Text>{informationData.data.name}</Text>
+          </VStack>
           <Button
             onPress={() => handleSizeClick(size)}
             key={size}

@@ -13,7 +13,14 @@ import { useDispatch } from "react-redux";
 import { setData } from "../../../store/slices/addinformation";
 import BtnChange from "./BtnChange";
 import { ChooseDate } from "../../News/ChooseDate";
+import { Text } from "react-native";
+import SignupSchema from "./Yup_input";
+
 const TextInput = () => {
+  const [btn1color, setbtn1color] = React.useState("rgb(220,220,220)");
+  const [btn2color, setbtn2color] = React.useState("rgb(220,220,220)");
+  const [btn3color, setbtn3color] = React.useState("rgb(220,220,220)");
+  const [btn4color, setbtn4color] = React.useState("rgb(220,220,220)");
   const dispatch = useDispatch();
   const onSubmit = (data) => {
     dispatch(setData(data));
@@ -23,21 +30,29 @@ const TextInput = () => {
     <Formik
       initialValues={{
         name: "",
-        date: "",
         level: "",
+        look: "",
         city: "",
         area: "",
         address: "",
         source: "",
         remark: "",
-        buyer:"",
+        buyer: "",
       }}
+      validationSchema={SignupSchema}
       onSubmit={onSubmit}
     >
-      {({ handleChange, handleBlur, handleSubmit, values }) => (
+      {({
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        values,
+        errors,
+        touched,
+      }) => (
         <VStack space={4} width="100%">
-          <FormControl>
-            <HStack alignItems="center">
+          <FormControl isRequired="true">
+            <HStack alignItems="center" space="1">
               <FormControl.Label>客人姓名</FormControl.Label>
               <Input
                 width="37%"
@@ -47,12 +62,43 @@ const TextInput = () => {
                 onChangeText={handleChange("name")}
                 value={values.name}
               />
-
-              <BtnChange name1="買" name2="賣" label=""/>
+              <HStack alignItems="center">
+                <Button
+                  size="sm"
+                  bg={btn1color}
+                  onPress={() => {
+                    {
+                      values.buyer = "買";
+                      setbtn1color(plate.lightOrange),
+                        setbtn2color("rgb(220,220,220)");
+                    }
+                  }}
+                >
+                  買
+                </Button>
+                <Button
+                  ml={2}
+                  size="sm"
+                  bg={btn2color}
+                  onPress={() => {
+                    {
+                      values.buyer = "賣";
+                      setbtn1color("rgb(220,220,220)"),
+                        setbtn2color(plate.lightOrange);
+                    }
+                  }}
+                >
+                  賣
+                </Button>
+              </HStack>
+            </HStack>
+            <HStack space={170}>
+              {errors.name && touched.name ? <Text color="cyan.500">{errors.name}</Text> : null}
+              {errors.buyer && touched.buyer ? <Text>{errors.buyer}</Text> : null}
             </HStack>
           </FormControl>
 
-          <FormControl>
+          <FormControl isRequired="true">
             <HStack alignItems="center">
               <FormControl.Label>等級</FormControl.Label>
               <Select
@@ -69,19 +115,51 @@ const TextInput = () => {
                 })}
               </Select>
             </HStack>
+            {errors.level && touched.level ? <Text>{errors.level}</Text> : null}
           </FormControl>
 
-          <FormControl>
+          <FormControl isRequired="true">
             <HStack alignItems="center">
               <FormControl.Label>接觸日期</FormControl.Label>
-              <ChooseDate name="新增物件"/>
+              <ChooseDate name="新增物件" />
             </HStack>
           </FormControl>
+          <FormControl isRequired="true">
+            <HStack alignItems="center">
+              <FormControl.Label>帶看過</FormControl.Label>
+              <Button
+                size="sm"
+                bg={btn3color}
+                onPress={() => {
+                  {
+                    values.look = "Yes";
+                    setbtn3color(plate.lightOrange),
+                      setbtn4color("rgb(220,220,220)");
+                  }
+                }}
+              >
+                Yes
+              </Button>
+              <Button
+                ml={2}
+                size="sm"
+                bg={btn4color}
+                onPress={() => {
+                  {
+                    values.look = "No";
+                    setbtn3color("rgb(220,220,220)"),
+                      setbtn4color(plate.lightOrange);
+                  }
+                }}
+              >
+                No
+              </Button>
+            </HStack>
+            {errors.look && touched.look ? <Text>{errors.look}</Text> : null}
+          </FormControl>
 
-          <BtnChange name1="Yes" name2="No" label="帶看過" />
-
-          <FormControl>
-            <VStack space={4}>
+          <VStack space={4}>
+            <FormControl isRequired="true">
               <HStack alignItems="center" space={1}>
                 <FormControl.Label>地址</FormControl.Label>
                 <Select
@@ -111,53 +189,54 @@ const TextInput = () => {
                   })}
                 </Select>
               </HStack>
-              <FormControl>
-                <HStack alignItems="center">
-                  <Input
-                    py={1}
-                    width="100%"
-                    onBlur={handleBlur("address")}
-                    placeholder="詳細地址"
-                    onChangeText={handleChange("address")}
-                    value={values.address}
-                  />
-                </HStack>
-              </FormControl>
-              <HStack space={12}>
-                <BtnChange name1="高" name2="低" label="坪數" />
-                <BtnChange name1="高" name2="低" label="價位" />
-              </HStack>
-              <HStack space={12}>
-                <BtnChange name1="高" name2="低" label="房數" />
-                <BtnChange name1="有" name2="無" label="車位" />
-              </HStack>
-
-              <FormControl>
-                <HStack alignItems="center">
-                  <FormControl.Label>來源</FormControl.Label>
-                  <Input
-                    py={1}
-                    width="85%"
-                    onBlur={handleBlur("source")}
-                    onChangeText={handleChange("source")}
-                    value={values.source}
-                  />
-                </HStack>
-              </FormControl>
-
-              <FormControl>
-                <FormControl.Label>備註</FormControl.Label>
+              {errors.city && touched.city ? <Text>{errors.city}</Text> : null}
+            </FormControl>
+            <FormControl>
+              <HStack alignItems="center">
                 <Input
-                  multiline={true}
                   py={1}
                   width="100%"
-                  onBlur={handleBlur("remark")}
-                  onChangeText={handleChange("remark")}
-                  value={values.remark}
+                  onBlur={handleBlur("address")}
+                  placeholder="詳細地址"
+                  onChangeText={handleChange("address")}
+                  value={values.address}
                 />
-              </FormControl>
-            </VStack>
-          </FormControl>
+              </HStack>
+            </FormControl>
+            <HStack space={12}>
+              <BtnChange name1="高" name2="低" label="坪數" />
+              <BtnChange name1="高" name2="低" label="價位" />
+            </HStack>
+            <HStack space={12}>
+              <BtnChange name1="高" name2="低" label="房數" />
+              <BtnChange name1="有" name2="無" label="車位" />
+            </HStack>
+
+            <FormControl>
+              <HStack alignItems="center">
+                <FormControl.Label>來源</FormControl.Label>
+                <Input
+                  py={1}
+                  width="85%"
+                  onBlur={handleBlur("source")}
+                  onChangeText={handleChange("source")}
+                  value={values.source}
+                />
+              </HStack>
+            </FormControl>
+
+            <FormControl>
+              <FormControl.Label>備註</FormControl.Label>
+              <Input
+                multiline={true}
+                py={1}
+                width="100%"
+                onBlur={handleBlur("remark")}
+                onChangeText={handleChange("remark")}
+                value={values.remark}
+              />
+            </FormControl>
+          </VStack>
 
           <Button
             py={1}

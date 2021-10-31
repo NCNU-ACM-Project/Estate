@@ -14,7 +14,7 @@ export default function App() {
     <Box bg="#fff" flex={1}>
       <ScrollView>
         <Center>
-          <KeyInput />
+          <KeyInput Defal = "輸入關鍵字"/>
         </Center>
         <HStack space={8} alignItems="center">
           <ChooseDate />

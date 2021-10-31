@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Box,
   Button,
-  Text,
   Center,
   HStack,
   VStack,
@@ -11,7 +10,6 @@ import {
 } from "native-base";
 import { KeyInput } from "../News/KeyInput";
 import { Sort } from "../News/Sort";
-import { Filter } from "../News/Filter";
 import { ChooseDate } from "../News/ChooseDate";
 import { useSelector, useDispatch } from "react-redux";
 import { resetFilter } from "../../store/slices/filter";
@@ -31,21 +29,23 @@ export default function App() {
   dispatch(resetFilter());
   return (
     <Box bg="#fff" flex={1}>
-      <Center>
-        <KeyInput />
-      </Center>
-      <HStack space={8} alignItems="center">
-        <ChooseDate name="買方租方" />
-        <Sort />
-      </HStack>
-      <Center mt={5}>
-      <Card/>
-      </Center>
-      <Button
-        onPress={() => {
-          console.log(informationData);
-        }}
-      />
+      <ScrollView>
+        <Center>
+          <KeyInput Defal = "輸入姓名"/>
+        </Center>
+        <HStack space={8} alignItems="center"></HStack>
+        <Center mt={2}>
+          <VStack space={3}>
+            <Card />
+            <Card />
+          </VStack>
+        </Center>
+        <Button
+          onPress={() => {
+            console.log(informationData);
+          }}
+        />
+      </ScrollView>
     </Box>
   );
 }

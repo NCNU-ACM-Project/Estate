@@ -15,8 +15,6 @@ const informationSlice = createSlice({
   initialState: initialState,
   reducers: {
     setData: (state, action) => { state.data = action.payload; },
-    setBuyer: (state, action) => { state.buyer = action.payload; },
-    setLook: (state, action) => { state.look = action.payload; },
     setNum: (state, action) => { state.num = action.payload; },
     setMoney: (state, action) => { state.money = action.payload; },
     setHouse: (state, action) => { state.house = action.payload; },

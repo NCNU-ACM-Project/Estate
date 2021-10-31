@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Button } from "native-base";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, Feather } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
 import { resetinformation } from "../store/slices/addinformation";
 //import Fake from "../components/Fake2";
@@ -10,16 +10,43 @@ import MyObject from "../screens/MyObject";
 import plate from "../styles/plate";
 import Buyer from "../screens/Buyer";
 import AddInformation from "../screens/Buyer/AddInformation/AddInformation";
+import Setting from "../screens/Setting";
 import GoodNews from "../screens/GoodNews";
 const Tab = createStackNavigator();
 
-export default function App1({navigation}) {
+export default function App1({ navigation }) {
   const dispatch = useDispatch();
   return (
     <Tab.Navigator
       screenOptions={{ headerStyle: styles, headerTitleAlign: "center" }}
     >
-      <Tab.Screen name="MembershipCenter" component={UserRelative} />
+      <Tab.Screen
+        name="MembershipCenter"
+        component={UserRelative}
+        options={{
+          headerRight: () => (
+            <Button
+              onPress={() => {
+                navigation.navigate("setting")
+              }}
+              size="xs"
+              colorScheme="rgb(238,213,176)"
+              bg={plate.lightOrange}
+            >
+              <Feather name="settings" size={30} color="black"/>
+            </Button>
+          ),
+          headerTitle: "MembershipCenter",
+        }}
+      />
+
+      <Tab.Screen
+        name="setting"
+        component={Setting}
+        options={{
+          headerTitle: "設定",
+        }}
+      />
 
       <Tab.Screen
         name="fake"
@@ -34,9 +61,12 @@ export default function App1({navigation}) {
         options={{
           headerRight: () => (
             <Button
-              onPress={() => {navigation.navigate("addinformation"), dispatch(resetinformation());}}
+              onPress={() => {
+                navigation.navigate("addinformation"),
+                  dispatch(resetinformation());
+              }}
               size="xs"
-              colorScheme = "rgb(238,213,176)"
+              colorScheme="rgb(238,213,176)"
               bg={plate.lightOrange}
             >
               <Ionicons name="add-sharp" size={30} color="black" />
@@ -45,14 +75,14 @@ export default function App1({navigation}) {
           headerTitle: "買方租方",
         }}
       />
-
+      
       <Tab.Screen
         name="addinformation"
         component={AddInformation}
         options={{
           headerTitle: "新增資訊",
         }}
-      /> 
+      />
 
       {/* <Tab.Screen
         name="fake"

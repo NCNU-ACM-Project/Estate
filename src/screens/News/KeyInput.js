@@ -3,7 +3,7 @@ import { Input, Icon, Box, Button } from "native-base";
 import { AntDesign, Feather } from "@expo/vector-icons";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchNews } from "../../store/slices/filter";
-export const KeyInput = () => {
+export const KeyInput = (props) => {
   const dispatch = useDispatch();
   const { searchNews } = useSelector((state) => state.filter);
   const SortItemSelect = (keyWord) => {
@@ -44,7 +44,7 @@ export const KeyInput = () => {
             <Icon as={<Feather name="x" />} size={5} m={2} color="#8E8E8E" />
           </Button>
         }
-        placeholder="輸入關鍵字"
+        placeholder={props.Defal}
       />
     </Box>
   );

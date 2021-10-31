@@ -10,7 +10,7 @@ import TextInput from "./Input";
 
 const AddInformation = () => {
   return (
-    <ScrollView>
+    <ScrollView bg="#fff">
       <KeyboardAvoidingView behavior="padding">
         <Box flex={1} margin={5}>
           <VStack>
