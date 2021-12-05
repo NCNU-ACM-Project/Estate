@@ -1,6 +1,5 @@
 import React from "react";
 import { Dimensions } from "react-native";
-import { Home } from "../screens/Home";
 import { UrgentObject } from "../screens/UrgentObject";
 
 import { AntDesign } from "@expo/vector-icons";
