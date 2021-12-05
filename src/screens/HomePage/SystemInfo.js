@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
 import NormalText from "../../components/NormalText";
 import Hr from "../../components/Hr";
